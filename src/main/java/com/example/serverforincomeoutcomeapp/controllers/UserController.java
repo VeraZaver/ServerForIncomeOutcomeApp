@@ -2,10 +2,7 @@ package com.example.serverforincomeoutcomeapp.controllers;
 
 import com.example.serverforincomeoutcomeapp.repos.UserRepo;
 import com.example.serverforincomeoutcomeapp.services.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -31,5 +28,10 @@ public class UserController {
     public  String login (@RequestParam String login,
                           @RequestParam String password){
         return userService.login(login, password);
+    }
+
+    @GetMapping("/get")
+    public String getUser(){
+        return userRepo.findAll().toString();
     }
 }
